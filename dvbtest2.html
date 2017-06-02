@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DVB Viewer Data Access</title>
+
+  </head>
+
+  <body>
+    <h1>Get data from Mediaserver</h1>
+    <div id="app">
+      <br>
+      <h2>Push the button</h2>
+         <br>
+        <button class="btn btn-primary btn-block" id="submit-form" v-on:click="get_data">Submit</button>
+    </div> <!-- end of #app -->
+  </body>
+
+  <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      methods: {
+        get_data: function() {
+          var app = this
+          axios.get('api/status2.html')
+                .then(function (response) {
+				  console.log(response.data)
+				  alert(response.data)
+                })
+                .catch(function (error) {
+				alert('error '+error)
+                })
+        }
+      }
+    })
+  </script>
+</html>
